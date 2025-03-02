@@ -16,8 +16,6 @@ COPY rootfs /
 RUN git clone https://github.com/slespersen/PetkitW5BLEMQTT.git && \
     cp -r ./PetkitW5BLEMQTT/PetkitW5BLEMQTT /etc/petkit-ble-bridge/ && \
     rm -rf ./PetkitW5BLEMQTT
-#COPY PetkitW5BLEMQTT/PetkitW5BLEMQTT /etc/petkit-ble-bridge/PetkitW5BLEMQTT
-# COPY pyproject.toml /usr/bin/PetkitW5BLEMQTT
 
 WORKDIR /etc/petkit-ble-bridge
 RUN /etc/petkit-ble-bridge/init

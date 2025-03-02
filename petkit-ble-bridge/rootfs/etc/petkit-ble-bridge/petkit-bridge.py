@@ -33,12 +33,24 @@ class Manager:
     def setup_logging(self, logging_level):
         logging.basicConfig(level=logging_level, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
+    async def scan_devices(self, escalating=False):
+        devices = await self.ble_manager.scan()
+        message = '\n'.join([f"{x.address}: {x.name}" for x in devices])
+        if escalating: self.logger.error(message)
+        else: self.logger.info()
+        
     async def run(self, address):
         await self.ble_manager.scan()
         
         self.logger.info(f"Connecting...")
         
-        if await self.ble_manager.connect_device(address):
+        connect_result = False
+        try: connect_result = await self.ble_manager.connect_device(address)
+        except Exception as e: self.logger.error(e)
+        
+        if not connect_result:
+            await self.scan_devices(True)
+        else:
             self.logger.info(f"Connected.")
             
             # Start the producer and consumer tasks
