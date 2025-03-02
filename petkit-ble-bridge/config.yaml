@@ -1,7 +1,7 @@
 ---
 name: "PetKit BLE Bridge"
 description: "Provides a BLE Bridge for PetKit devices."
-version: "1.0.8"
+version: "1.0.9"
 slug: "petkit_ble_bridge"
 url: https://github.com/pdiegmann/ha-petkit-ble-bridge/tree/main/petkit-ble-bridge
 image: "ghcr.io/pdiegmann/{arch}-petkit-ble-bridge"
