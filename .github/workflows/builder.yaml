@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4.2.2
+        with:
+          submodules: 'recursive'
 
       - name: Get changed files
         id: changed_files
