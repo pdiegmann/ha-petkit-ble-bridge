@@ -1,0 +1,3 @@
+[submodule "petkit-ble-bridge/PetkitW5BLEMQTT"]
+	path = petkit-ble-bridge/PetkitW5BLEMQTT
+	url = https://github.com/slespersen/PetkitW5BLEMQTT.git

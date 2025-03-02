@@ -1,0 +1,15 @@
+configuration:
+  address:
+    name: BLE Address of the PetKit Device
+  mqtt:
+    name: Whether or not to use MQTT
+  mqtt_broker:
+    name: MQTT Broker Host
+  mqtt_port:
+    name: MQTT Broker Port
+  mqtt_user:
+    name: MQTT User
+  mqtt_password:
+    name: MQTT Password
+  logging_level:
+    name: Logging Level

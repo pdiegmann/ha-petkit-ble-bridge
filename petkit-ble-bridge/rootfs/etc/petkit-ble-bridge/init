@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+python3 -m venv /etc/petkit-ble-bridge/venv
+source /etc/petkit-ble-bridge/venv/bin/activate
+python3 -m pip install -r ./PetkitW5BLEMQTT/requirements.txt
+python3 -m pip install bleak
+
+#curl -LsSf https://astral.sh/uv/install.sh | sh
+#source $HOME/.local/bin/env
+#uv python install 3.11
+#uv init .
+#uv add -r ./PetkitW5BLEMQTT/requirements.txt

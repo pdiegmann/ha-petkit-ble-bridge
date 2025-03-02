@@ -1,0 +1,16 @@
+[project]
+name = "petkitw5blemqtt"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bleak==0.20.2",
+    "paho-mqtt==1.6.1",
+    "script-py>=0.0.5",
+]
+#py-modules = ["__init__"]
+#packages = [""]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*.py"]

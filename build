@@ -1,0 +1,23 @@
+#!/bin/bash
+
+ARCH="aarch64"
+docker build \
+  --build-arg BUILD_FROM="ghcr.io/home-assistant/${ARCH}-base:latest" \
+  --build-arg BUILD_ARCH="${ARCH}" \
+  --build-arg TEMPIO_VERSION="2024.11.2" \
+  -t local/petkit-ble-bridge \
+  petkit-ble-bridge
+
+# docker run \
+#   --rm \
+#   -it \
+#   --name builder \
+#   --privileged \
+#   -v ./petkit-ble-bridge:/data \
+#   -v /var/run/docker.sock:/var/run/docker.sock:ro \
+#   ghcr.io/home-assistant/aarch64-builder \
+#   -t /data \
+#   --all \
+#   --test \
+#   -i petkit-ble-bridge-{arch} \
+#   -d local

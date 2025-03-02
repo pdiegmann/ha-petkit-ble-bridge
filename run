@@ -1,0 +1,6 @@
+#!/bin/bash
+
+docker run \
+  --rm \
+  -v ./tmp/my_test_data:/data \
+  local/petkit-ble-bridge
