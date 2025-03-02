@@ -32,6 +32,12 @@ class Manager:
             self.mqtt_client = MQTTClient(logger=self.logger, **mqtt_settings)
             self.mqtt_client.connect()
             self.event_handlers.callback = self.mqtt_client.publish_state
+            
+    def create_task(self, funct):
+        if sys.version_info >= (3, 10):
+            return asyncio.create_task(funct)
+        else:
+            return asyncio.get_event_loop().create_task(funct)
 
     def setup_logging(self, logging_level):
         logging.basicConfig(level=logging_level, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -54,7 +60,7 @@ class Manager:
             self.logger.info(f"Connected.")
             
             # Start the producer and consumer tasks
-            consumer = asyncio.create_task(self.ble_manager.message_consumer(address, Constants.WRITE_UUID))
+            consumer = self.create_task(self.ble_manager.message_consumer(address, Constants.WRITE_UUID))
 
             # Init the device
             self.commands.init_device_data()
@@ -67,7 +73,7 @@ class Manager:
                     self.logger.info(f"Device not initialized yet, waiting...")
                     await asyncio.sleep(1)
                 
-                heartbeat = asyncio.create_task(self.ble_manager.heartbeat(60))
+                heartbeat = self.create_task(self.ble_manager.heartbeat(60))
 
                 if self.mqtt_client and not self.mqtt_client.connected:
                     # Setup the MQTT payloads
