@@ -1,0 +1,7 @@
+---
+channel: stable
+addons:
+  petkit-ble-bridge:
+    repository: pdiegmann/ha-petkit-ble-bridge
+    target: petkit-ble-bridge
+    image: ghcr.io/pdiegmann/{arch}-petkit-ble-bridge
