@@ -8,6 +8,8 @@ class Manager:
         self.setup_logging(logging_level)
         self.logger = logging.getLogger("PetkitW5BLEMQTT")
         debug = logging_level == logging.DEBUG  # Determine if debug logging is enabled
+        
+        asyncio.get_event_loop().set_exception_handler(self.loop_exception)
 
         self.address = address
         self.device = Device(self.address)
@@ -39,18 +41,15 @@ class Manager:
         if escalating: self.logger.error(message)
         else: self.logger.info()
         
+    def loop_exception(self, _, context):
+        self.logger.error(context)
+        
     async def run(self, address):
         await self.ble_manager.scan()
         
         self.logger.info(f"Connecting...")
         
-        connect_result = False
-        try: connect_result = await self.ble_manager.connect_device(address)
-        except Exception as e: self.logger.error(e)
-        
-        if not connect_result:
-            await self.scan_devices(True)
-        else:
+        if await self.ble_manager.connect_device(address):
             self.logger.info(f"Connected.")
             
             # Start the producer and consumer tasks
