@@ -5,7 +5,7 @@ slug: "petkit-ble-bridge"
 url: "https://github.com/pdiegmann/ha-petkit-ble-bridge/tree/main/petkit-ble-bridge"
 #image: "ghcr.io/pdiegmann/{arch}-petkit-ble-bridge"
 init: false
-startup: true
+startup: application
 host_dbus: true
 usb: true
 arch:
