@@ -1,12 +1,13 @@
 name: "PetKit BLE Bridge"
 description: "Provides a BLE Bridge for PetKit devices."
 version: "1.0.0"
-slug: "petkit-ble-bridge"
+slug: "petkit_ble_bridge"
 url: "https://github.com/pdiegmann/ha-petkit-ble-bridge/tree/main/petkit-ble-bridge"
 image: "ghcr.io/pdiegmann/{arch}-petkit-ble-bridge"
 init: false
 host_dbus: true
 usb: true
+panel_icon: mdi:forward
 arch:
   - aarch64
   - amd64
