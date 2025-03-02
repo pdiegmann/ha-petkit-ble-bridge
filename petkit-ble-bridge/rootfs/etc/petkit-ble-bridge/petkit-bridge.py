@@ -1,4 +1,5 @@
 import argparse
+import sys
 import asyncio
 import logging
 from PetkitW5BLEMQTT import BLEManager, Constants, Device, EventHandlers, Commands, Logger, MQTTClient, MQTTCallback, MQTTPayloads, Utils
@@ -138,4 +139,9 @@ if __name__ == "__main__":
     logging_level = getattr(logging, args.logging_level.upper(), logging.INFO)
 
     manager = Manager(args.address, mqtt_enabled=args.mqtt, mqtt_settings=mqtt_settings, logging_level=logging_level)
-    asyncio.run(manager.run(args.address))
+    if sys.version_info >= (3, 10):
+        logging.getLogger("PetkitW5BLEMQTT").warning(f"assuming >= 3.10 ({sys.version_info})")
+        asyncio.run(manager.run(args.address))
+    else:
+        logging.getLogger("PetkitW5BLEMQTT").warning(f"assuming < 3.10 ({sys.version_info})")
+        asyncio.get_event_loop().run_until_complete(manager.run(args.address))
