@@ -35,7 +35,7 @@ class Manager:
 
     async def scan_devices(self, escalating=False):
         devices = await self.ble_manager.scan()
-        message = '\n'.join([f"{x['address']}: {x['name']}" for x in devices])
+        message = '\n'.join([f"{x['address'] if 'address' in x else x}: {x['name'] if 'name' in x else '--'}" for x in devices.items()])
         if escalating: self.logger.error(message)
         else: self.logger.info()
         
