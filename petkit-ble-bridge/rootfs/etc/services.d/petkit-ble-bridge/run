@@ -17,12 +17,10 @@ declare logging_level
 
 ## Get the keys from the user config options.
 address=$(bashio::config 'address')
-mqtt=$(bashio::config 'mqtt')
 mqtt_broker=$(bashio::config 'mqtt_broker')
 mqtt_port=$(bashio::config 'mqtt_port')
 mqtt_user=$(bashio::config 'mqtt_user')
 mqtt_password=$(bashio::config 'mqtt_password')
-logging_level=$(bashio::config 'logging_level')
 
 ## Run your program
 exec /etc/petkit-ble-bridge/run \
@@ -32,4 +30,4 @@ exec /etc/petkit-ble-bridge/run \
   --mqtt_port ${mqtt_port} \
   --mqtt_user "${mqtt_user}" \
   --mqtt_password "${mqtt_password}" \
-  --logging_level "${logging_level}"
+  --logging_level "INFO"

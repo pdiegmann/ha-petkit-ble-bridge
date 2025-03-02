@@ -1,7 +1,7 @@
 ---
 name: "PetKit BLE Bridge"
 description: "Provides a BLE Bridge for PetKit devices."
-version: "1.0.2"
+version: "1.0.3"
 slug: "petkit_ble_bridge"
 url: https://github.com/pdiegmann/ha-petkit-ble-bridge/tree/main/petkit-ble-bridge
 image: "ghcr.io/pdiegmann/{arch}-petkit-ble-bridge"
@@ -30,21 +30,15 @@ privileged:
   - "SYS_MODULE"
 options:
   address: ""
-  mqtt: false
   mqtt_broker: ""
-  mqtt_port: 0
+  mqtt_port: 31000
   mqtt_user: ""
   mqtt_password: ""
   logging_level: INFO
 schema:
-  address: str(4,10)
-  mqtt: bool
+  address: "str"
   mqtt_broker: "str?"
   mqtt_port: "port?"
   mqtt_user: "str?"
   mqtt_password: "password?"
-  logging_level:
-    - DEBUG
-    - INFO
-    - WARNING
-    - ERROR
+  logging_level: "str?"
