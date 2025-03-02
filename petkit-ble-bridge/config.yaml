@@ -1,18 +1,33 @@
+---
 name: "PetKit BLE Bridge"
 description: "Provides a BLE Bridge for PetKit devices."
-version: "1.0.0"
+version: "1.0.2"
 slug: "petkit_ble_bridge"
-url: "https://github.com/pdiegmann/ha-petkit-ble-bridge/tree/main/petkit-ble-bridge"
+url: https://github.com/pdiegmann/ha-petkit-ble-bridge/tree/main/petkit-ble-bridge
 image: "ghcr.io/pdiegmann/{arch}-petkit-ble-bridge"
 init: false
+boot: auto
+hassio_api: true
+hassio_role: admin
 host_dbus: true
+homeassistant: 2023.11.0
+host_ipc: true
+kernel_modules: true
 usb: true
+services:
+  - mqtt:want
+udev: true
 panel_icon: mdi:forward
+panel_title: PetKitBridge
 arch:
   - aarch64
   - amd64
   - armhf
   - armv7
+privileged:
+  - "SYS_RAWIO"
+  - "SYS_RESOURCE"
+  - "SYS_MODULE"
 options:
   address: ""
   mqtt: false
