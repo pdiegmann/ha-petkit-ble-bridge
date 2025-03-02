@@ -4,7 +4,7 @@ FROM $BUILD_FROM
 
 ARG PYTHON_VERSION=3.11
 
-RUN apk add --no-cache python3 py3-pip
+RUN apk add --no-cache git python3 py3-pip
 
 # Execute during the build of the image
 ARG TEMPIO_VERSION BUILD_ARCH
